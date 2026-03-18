@@ -1,4 +1,4 @@
-import { generateNickname, animateNicknames } from "nickname-lib";
+import { generateNickname, animateNicknames } from "../nickname-lib";
 
 async function runDemo() {
     const generator = generateNickname();
