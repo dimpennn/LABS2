@@ -43,10 +43,14 @@ class BDPQ {
     }
 
     dequeueNewest() {
-
+        const element = this.peekNewest();
+        this.s.delete(element);
+        return element;
     }
 
     dequeueOldest() {
-
+        const element = this.peekOldest();
+        this.s.delete(element);
+        return element;
     }
 }
