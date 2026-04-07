@@ -16,11 +16,11 @@ class BDPQ {
         this.s.add(newElement);
     }
 
-    peekHighestPriority() {
+    peekHighest() {
 
     }
 
-    peekLowestPriority() {
+    peekLowest() {
 
     }
 
@@ -34,12 +34,16 @@ class BDPQ {
         return arr[0];
     }
 
-    dequeueHighestPriority() {
-
+    dequeueHighest() {
+        const element = this.peekHighest();
+        this.s.delete(element);
+        return element;
     }
 
-    dequeueLowestPriority() {
-
+    dequeueLowest() {
+        const element = this.peekLowest();
+        this.s.delete(element);
+        return element;
     }
 
     dequeueNewest() {
@@ -54,3 +58,21 @@ class BDPQ {
         return element;
     }
 }
+
+const penis = new BDPQ;
+
+penis.enqueu("chlen", 10);
+penis.enqueu("banan", 15);
+penis.enqueu("ogirok", 42);
+penis.enqueu("kovbasa", 7);
+penis.enqueu("sosiska", 99);
+
+console.log(penis.peekOldest().element);
+console.log(penis.peekNewest().element);
+console.log(penis.peekLowest().element);
+console.log(penis.peekHighest().element);
+
+console.log(penis.dequeueOldest().element);
+console.log(penis.dequeueNewest().element);
+console.log(penis.dequeueLowest().element);
+console.log(penis.dequeueHighest().element);
