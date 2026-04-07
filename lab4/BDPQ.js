@@ -25,11 +25,13 @@ class BDPQ {
     }
 
     peekNewest() {
-
+        const arr = Array.from(this.s.values());
+        return arr[arr.length - 1];
     }
 
     peekOldest() {
-
+        const arr = Array.from(this.s.values());
+        return arr[0];
     }
 
     dequeueHighestPriority() {
