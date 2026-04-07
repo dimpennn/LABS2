@@ -12,16 +12,32 @@ class BDPQ {
     }
 
     enqueu(element, priority) {
-        const newElement = {element, priority};
+        const newElement = { element, priority };
         this.s.add(newElement);
     }
 
     peekHighest() {
-
+        const arr = Array.from(this.s.values());
+        const size = this.s.size;
+        let index = 0;
+        for (let i = 1; i < size; i++) {
+            if (arr[i].priority > arr[index].priority) {
+                index = i;
+            }
+        }
+        return arr[index];
     }
 
     peekLowest() {
-
+        const arr = Array.from(this.s.values());
+        const size = this.s.size;
+        let index = 0;
+        for (let i = 1; i < size; i++) {
+            if (arr[i].priority < arr[index].priority) {
+                index = i;
+            }
+        }
+        return arr[index];
     }
 
     peekNewest() {
