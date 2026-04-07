@@ -3,8 +3,17 @@ class BDPQ {
         this.s = new Set();
     }
 
-    enqueu(item, priority) {
-        
+    size() {
+        return this.s.size;
+    }
+
+    isEmpty() {
+        return this.s.size === 0;
+    }
+
+    enqueu(element, priority) {
+        const newElement = {element, priority};
+        this.s.add(newElement);
     }
 
     peekHighestPriority() {
