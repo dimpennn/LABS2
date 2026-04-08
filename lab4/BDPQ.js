@@ -1,76 +1,68 @@
 class BDPQ {
     constructor() {
-        this.s = new Set();
+        this.elements = [];
     }
 
     size() {
-        return this.s.size;
+        return this.elements.length;
     }
 
     isEmpty() {
-        return this.s.size === 0;
+        return this.elements.length === 0;
     }
 
-    enqueu(element, priority) {
+    enqueue(element, priority) {
         const newElement = { element, priority };
-        this.s.add(newElement);
+        this.elements.push(newElement);
     }
 
     peekHighest() {
-        const arr = Array.from(this.s.values());
-        const size = this.s.size;
         let index = 0;
-        for (let i = 1; i < size; i++) {
-            if (arr[i].priority > arr[index].priority) {
+        for (let i = 1; i < this.size(); i++) {
+            if (this.elements[i].priority > this.elements[index].priority) {
                 index = i;
             }
         }
-        return arr[index];
+        return this.elements[index];
     }
 
     peekLowest() {
-        const arr = Array.from(this.s.values());
-        const size = this.s.size;
         let index = 0;
-        for (let i = 1; i < size; i++) {
-            if (arr[i].priority < arr[index].priority) {
+        for (let i = 1; i < this.size(); i++) {
+            if (this.elements[i].priority < this.elements[index].priority) {
                 index = i;
             }
         }
-        return arr[index];
+        return this.elements[index];
     }
 
     peekNewest() {
-        const arr = Array.from(this.s.values());
-        return arr[arr.length - 1];
+        return this.elements[this.size() - 1];
     }
 
     peekOldest() {
-        const arr = Array.from(this.s.values());
-        return arr[0];
+        return this.elements[0];
     }
 
     dequeueHighest() {
         const element = this.peekHighest();
-        this.s.delete(element);
+        const index = this.elements.indexOf(element);
+        this.elements.splice(index, 1);
         return element;
     }
 
     dequeueLowest() {
         const element = this.peekLowest();
-        this.s.delete(element);
+        const index = this.elements.indexOf(element);
+        this.elements.splice(index, 1);
         return element;
     }
 
     dequeueNewest() {
-        const element = this.peekNewest();
-        this.s.delete(element);
-        return element;
+        return this.elements.pop();
     }
 
     dequeueOldest() {
-        const element = this.peekOldest();
-        this.s.delete(element);
-        return element;
+        return this.elements.shift();
     }
 }
