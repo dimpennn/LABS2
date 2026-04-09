@@ -16,7 +16,7 @@ class BDPQ {
         this.elements.push(newElement);
     }
 
-    peekHighest() {
+    peekHighest(returnIndex = 0) {
         if (this.isEmpty()) return undefined;
         let index = 0;
         for (let i = 1; i < this.size(); i++) {
@@ -24,16 +24,22 @@ class BDPQ {
                 index = i;
             }
         }
+        if (returnIndex) {
+            return index;
+        }
         return this.elements[index];
     }
 
-    peekLowest() {
+    peekLowest(returnIndex = 0) {
         if (this.isEmpty()) return undefined;
         let index = 0;
         for (let i = 1; i < this.size(); i++) {
             if (this.elements[i].priority < this.elements[index].priority) {
                 index = i;
             }
+        }
+        if (returnIndex) {
+            return index;
         }
         return this.elements[index];
     }
@@ -50,16 +56,16 @@ class BDPQ {
 
     dequeueHighest() {
         if (this.isEmpty()) return undefined;
-        const element = this.peekHighest();
-        const index = this.elements.indexOf(element);
+        const index = this.peekHighest(1);
+        const element = this.elements[index];
         this.elements.splice(index, 1);
         return element;
     }
 
     dequeueLowest() {
         if (this.isEmpty()) return undefined;
-        const element = this.peekLowest();
-        const index = this.elements.indexOf(element);
+        const index = this.peekLowest(1);
+        const element = this.elements[index];
         this.elements.splice(index, 1);
         return element;
     }
