@@ -17,6 +17,7 @@ class BDPQ {
     }
 
     peekHighest() {
+        if (this.isEmpty()) return undefined;
         let index = 0;
         for (let i = 1; i < this.size(); i++) {
             if (this.elements[i].priority > this.elements[index].priority) {
@@ -27,6 +28,7 @@ class BDPQ {
     }
 
     peekLowest() {
+        if (this.isEmpty()) return undefined;
         let index = 0;
         for (let i = 1; i < this.size(); i++) {
             if (this.elements[i].priority < this.elements[index].priority) {
@@ -37,14 +39,17 @@ class BDPQ {
     }
 
     peekNewest() {
+        if (this.isEmpty()) return undefined;
         return this.elements[this.size() - 1];
     }
 
     peekOldest() {
+        if (this.isEmpty()) return undefined;
         return this.elements[0];
     }
 
     dequeueHighest() {
+        if (this.isEmpty()) return undefined;
         const element = this.peekHighest();
         const index = this.elements.indexOf(element);
         this.elements.splice(index, 1);
@@ -52,6 +57,7 @@ class BDPQ {
     }
 
     dequeueLowest() {
+        if (this.isEmpty()) return undefined;
         const element = this.peekLowest();
         const index = this.elements.indexOf(element);
         this.elements.splice(index, 1);
@@ -59,10 +65,12 @@ class BDPQ {
     }
 
     dequeueNewest() {
+        if (this.isEmpty()) return undefined;
         return this.elements.pop();
     }
 
     dequeueOldest() {
+        if (this.isEmpty()) return undefined;
         return this.elements.shift();
     }
 }
